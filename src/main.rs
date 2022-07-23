@@ -3,11 +3,13 @@ fn main() {
     print_str("hello world!");
     print_thing::<i32>(42);
     print_thing::<&str>("cheeseburgers");
+    print_thing(21);
+    print_thing("oof");
 }
 
 fn print_thing<T: std::fmt::Display>(thing: T)
 {
-    println!("The thing is: {thing}");
+    println!("The thing is a {}: {}", std::any::type_name::<T>(), thing);
 }
 
 fn print_i32(num: i32) {
