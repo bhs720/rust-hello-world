@@ -1,13 +1,32 @@
-use std::fmt::{Debug, Display};
+use std::fmt::Display;
 
 fn main() {
-    // print_i32(112);
-    // print_str("hello world!");
-    // print_thing::<i32>(42);
-    // print_thing::<&str>("cheeseburgers");
-    // print_thing(21);
-    // print_thing("oof");
+    print_i32(112);
+    print_str("hello world!");
+    print_thing::<i32>(42);
+    print_thing::<&str>("cheeseburgers");
+    print_thing(21);
+    print_thing("oof");
     print_things(42, "the answer");
+    let my_num = get_number();
+    println!("Got number: {my_num}");
+    println!("first is {}", first((11, 22)));
+    let mut my_var = 0;
+    println!("my_var is: {}", my_var);
+    mutate_var(&mut my_var);
+    println!("my_var is: {}", my_var);
+}
+
+fn mutate_var(x: &mut i32) {
+    *x = 42;
+}
+
+// parameter is a tuple
+fn first((value, _): (i32, i32)) -> i32 { value }
+
+fn get_number() -> i32 {
+    #![doc = "Return the number 42"]
+    return 42;
 }
 
 fn print_things<A, B>(thing_a: A, thing_b: B) where A: Display, B: Display {
